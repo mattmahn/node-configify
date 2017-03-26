@@ -1,9 +1,11 @@
 # Configify
+
 Browserify transform for [node-config](https://github.com/lorenwest/node-config) library
 
 ### Install
-```
-npm install config-browserify
+
+```sh
+npm install browserify-node-config
 ```
 
 ### Example
@@ -14,12 +16,12 @@ var configify = require('config-browserify');
 // ...
 {
     // ...
-	browserify: {
-		options: {
-			transform: [configify]
-		}
-	}
-	// ...
+  browserify: {
+    options: {
+      transform: [configify]
+    }
+  }
+  // ...
 }
 ```
 **package.json**
@@ -43,11 +45,13 @@ global.window && console.log(config.get('Client.testProperty')); // prints `hell
 ```js
 {
   "Client": {
-  	"testProperty": "hello!"
+    "testProperty": "hello!"
   }
 }
 ```
 
-#### Important 
-- For security purposes, only the `Client` level config properties can be accessible from client-side code (which is bundled by browserify)
-- For support for server-side rendering frameworks, there is no support for `watchify` at the moment. The entire app must be restarted in order to get config properties which were modified since the server started.
+#### Important
+
+- For support for server-side rendering frameworks, there is no support for
+  `watchify` at the moment. The entire app must be restarted in order to get
+  config properties which were modified since the server started.
